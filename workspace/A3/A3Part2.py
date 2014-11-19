@@ -1,5 +1,7 @@
 ﻿from scipy.fftpack import fft
 import numpy as np
+from fractions import gcd
+import matplotlib.pyplot as plt
 
 """
 A3-Part-2: Optimal zero-padding
@@ -44,3 +46,23 @@ def optimalZeropad(x, fs, f):
                         x appropriately (zero-padding length to be computed). mX is (M/2)+1 samples long
     """
     ## Your code here
+
+    W = len(x)
+
+    M = (W*2 + 1)/2
+    while True:
+        binIndexValues = int((1.0*fs/M) + 0.5)
+        
+        if (f % binIndexValues) != 0:
+            M = M + 2
+        else:
+            break
+
+    xZeroPadded = np.zeros(M)
+    xZeroPadded[:W] = x
+    
+    X = fft(xZeroPadded )
+    mX = 20 * np.log10( np.abs( X[:(M/2) + 1 ] ) )
+
+            
+    return mX
