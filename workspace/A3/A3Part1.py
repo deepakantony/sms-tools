@@ -47,7 +47,7 @@ def minimizeEnergySpreadDFT(x, fs, f1, f2):
 
     W = len(x)
     f = gcd( f1, f2 )
-    M = fs / f
+    M = 500#fs / f
     if M % 2 != 0:
         M += 1
     if M > W:

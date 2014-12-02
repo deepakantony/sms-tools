@@ -49,18 +49,16 @@ def optimalZeropad(x, fs, f):
 
     W = len(x)
 
-    M = (W*2 + 1)/2
-    while True:
-        binIndexValues = int((1.0*fs/M) + 0.5)
-        
-        if (f % binIndexValues) != 0:
-            M = M + 2
-        else:
-            break
+    multiple = f/fs # should be atleast this long
+    M = 0
+    while M < W:
+        M += multiple 
+    if M%2 != 0:
+        M += 1
 
     xZeroPadded = np.zeros(M)
     xZeroPadded[:W] = x
-    
+
     X = fft(xZeroPadded )
     mX = 20 * np.log10( np.abs( X[:(M/2) + 1 ] ) )
 
