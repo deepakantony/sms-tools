@@ -49,7 +49,7 @@ def optimalZeropad(x, fs, f):
 
     W = len(x)
 
-    multiple = f/fs # should be atleast this long
+    multiple = fs/f
     M = 0
     while M < W:
         M += multiple 
