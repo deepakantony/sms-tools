@@ -6,13 +6,17 @@ Sound analysis/synthesis tools for music applications written in python (with a 
 How to use
 ----------
 
-In order to use these tools you have to install version 2.7.* of python and the following modules: ipython, numpy, matplotlib, scipy, pygame, and cython. 
+In order to use these tools you have to install version 2.7.* of python and the following modules: ipython, numpy, matplotlib, scipy, and cython. 
 
 In Ubuntu (which we strongly recommend) in order to install all these modules it is as simple as typing in the Terminal:
 
-<code>$ sudo apt-get install python-dev ipython python-numpy python-matplotlib python-scipy python-pygame cython</code>
+<code>$ sudo apt-get install python-dev ipython python-numpy python-matplotlib python-scipy cython</code>
 
-then for using the tools, after downloading the whole package, you need to compile some C functions. For that you should go to the directory <code>software/models/utilFunctions_C</code> and type:</p>
+In OSX (which we do not support but that should work) you install these modules by typing in the Terminal:
+
+<code>$ pip install ipython numpy matplotlib scipy cython</code>
+
+then, for using the tools, after downloading the whole package, you need to compile some C functions. For that you should go to the directory <code>software/models/utilFunctions_C</code> and type:</p>
 
 <code>$ python compileModule.py build_ext --inplace </code>
 

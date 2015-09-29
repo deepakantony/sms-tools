@@ -2,8 +2,8 @@
 *.so
 *.pyc
 *.o
-workspace/*.pyc
-workspace/*.py
-workspace/*.wav
+*.py~
+workspace_dev/*
+workspace/*.py*
 software/models_interface/output_sounds/*.wav
 software/transformations_interface/output_sounds/*.wav
