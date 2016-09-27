@@ -34,9 +34,9 @@ To modify the existing code, or to create your own using some of the functions, 
 Content
 -------
 
-All the code is in the <code> software </code> directory, with subdirectories for the models, the transformations, and the interfaces. The lecture material is in the <code>lecture</code> directory and the sounds used for the examples and coming from <code>http://freesound.org</code> are in the <code>sounds</code> directory.
+All the code is in the <code> software </code> directory, with subdirectories for the models, the transformations, and the interfaces. The lecture materials are in the <code>lectures</code> directory, the assignments related to the lectures in the  <code>assignments</code> directory, and the sounds used for the examples and coming from <code>http://freesound.org</code> are in the <code>sounds</code> directory.
 
 License
 -------
-All the software is distributed with the Affero GPL licence, and the lecture slides and sounds are distributed with the Creative Commons Attribution-Noncommercial-Share Alike license.
+All the software is distributed with the Affero GPL license (http://www.gnu.org/licenses/agpl-3.0.en.html), the lecture slides are distributed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 (CC BY-NC-SA 4.0) license (http://creativecommons.org/licenses/by-nc-sa/4.0/) and the sounds in this repository are released under Creative Commons Attribution 4.0 (CC BY 4.0) license (http://creativecommons.org/licenses/by/4.0/)
 
