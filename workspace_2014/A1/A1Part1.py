@@ -1,9 +1,9 @@
 import sys
 import os
-import numpy as np
 sys.path.append('../../software/models/')
 from utilFunctions import wavread
-from scipy.io.wavfile import read
+import scipy.io.wavfile
+import numpy as np
 
 """
 A1-Part-1: Reading an audio file
@@ -21,14 +21,16 @@ converted to floating point numbers with a range from -1 to 1, which is what we 
 Remember that in python, the index of the first sample of an array is 0 and not 1.
 
 If you run your code using piano.wav as the input, the function should return the following 10 samples:  
-array([-0.06213569, -0.04541154, -0.02734458, -0.0093997 ,  0.00769066,	0.02319407,  0.03503525, 
-0.04309214, 0.04626606,  0.0441908], dtype=float32)
+[-0.06213569, -0.04541154, -0.02734458, -0.0093997 ,  0.00769066,	0.02319407,  0.03503525, 
+0.04309214, 0.04626606,  0.0441908]
 """
 
-def norm_factor(data_type):
-    if data_type.name.startswith('int'):
-        return (2**(data_type.itemsize*8-1))-1
-    return 1.0
+INT16_FAC = (2**15)-1
+INT32_FAC = (2**31)-1
+INT64_FAC = (2**63)-1
+norm_fact = {'int16':INT16_FAC, 'int32':INT32_FAC, 'int64':INT64_FAC,'float32':1.0,'float64':1.0}
+
+
 
 def readAudio(inputFile):
     """
@@ -37,9 +39,20 @@ def readAudio(inputFile):
     Output:
         The function should return a numpy array that contains 10 samples of the audio.
     """
-    ## Your code here
+        
+    sampleRate, audioData = scipy.io.wavfile.read(inputFile)
 
-    (fs,data) = read(inputFile)
-    data_norm = np.float32(data)/norm_factor(data.dtype)
-    return data_norm[50000:50010]
+    if (len(audioData.shape) !=1):                                   # raise error if more than one channel
+        raise ValueError("Audio file should be mono")
+        
+    if (sampleRate !=44100):                                         # raise error if more than one channel
+        raise ValueError("Sampling rate of input sound should be 44100")
+
+    if (len(audioData) < 50010):
+        raise ValueError("Input sound should atleast have 50010 samples in it")
+
+    #scale down and convert audio into floating point numbber in range of -1 to 1
+    audioData = np.float32(audioData)/norm_fact[audioData.dtype.name]
+
+    return audioData[50000:50010]
 
