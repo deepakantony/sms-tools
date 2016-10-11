@@ -20,5 +20,5 @@ def hopSamples(x,M):
     """
     ## Your code here
 
-  
+    return x[::M]
   

@@ -2,6 +2,7 @@ import sys
 import os
 sys.path.append('../../software/models/')
 from utilFunctions import wavread
+import numpy as np
 
 """
 A1-Part-2: Basic operations with audio
@@ -24,3 +25,5 @@ def minMaxAudio(inputFile):
     """
     ## Your code here
 
+    (fs,data) = wavread(inputFile)
+    return (np.amin(data), np.amax(data))

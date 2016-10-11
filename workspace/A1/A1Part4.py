@@ -19,6 +19,10 @@ How could we avoid damaging the signal when downsampling it?
 You can find some related information in https://en.wikipedia.org/wiki/Decimation_%28signal_processing%29.
 """
 
+def simpleDecimator(inputFile, M, outputFile):
+    (fs,data) = wavread(inputFile)
+    wavwrite(hopSamples(data,M), fs/M, outputFile)
+
 def downsampleAudio(inputFile, M):
     """
     Inputs:
@@ -26,3 +30,7 @@ def downsampleAudio(inputFile, M):
         	M: downsampling factor (positive integer)
     """
     ## Your code here
+    outputFile = inputFile.replace(".wav", "_downsampled.wav")
+
+    simpleDecimator(inputFile, M, outputFile)
+
