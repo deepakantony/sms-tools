@@ -17,7 +17,7 @@ hM2 = int(M/2)
 (fs,data) = wavread('../../sounds/soprano-E4.wav')
 x = data[5000:5000+M] * np.hamming(M)
 
-N = 1024
+N = 256
 fftbuf = np.zeros(N)
 fftbuf[:hM1] = x[hM2:]
 fftbuf[N-hM2:] = x[:hM2]
