@@ -61,3 +61,32 @@ def suppressFreqDFTmodel(x, fs, N):
     outputScaleFactor = sum(w)
     
     ## Your code here
+
+    (mX,pX) = dftAnal(x,w,N)
+    y = dftSynth(mX,pX,M)
+
+    dHz = 1.*fs/N
+
+    '''
+    for i in range((N/2)+1):
+        if mX[i] > -30:
+            print i*dHz, mX[i]
+    '''
+
+    thresh = 70.0 + dHz
+    for i in range((N/2)+1):
+        if (i*dHz) >= thresh:
+            break
+        else:
+            mX[i] = -120.
+
+    '''
+    for i in range((N/2)+1):
+        if mX[i] > -30:
+            print i*dHz
+    '''    
+
+    yfilt = dftSynth(mX,pX,M)
+
+    return y,yfilt
+
