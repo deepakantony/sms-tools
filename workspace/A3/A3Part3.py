@@ -63,6 +63,6 @@ def testRealEven(x):
 
     isRealEven = (max(abs(X.imag)) < 1e-6)
 
-    return isRealEven, dftbuffer, X
+    return (bool(isRealEven), dftbuffer, X)
 
 

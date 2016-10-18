@@ -63,7 +63,7 @@ def suppressFreqDFTmodel(x, fs, N):
     ## Your code here
 
     (mX,pX) = dftAnal(x,w,N)
-    y = dftSynth(mX,pX,M)
+    y = dftSynth(mX,pX,M)*outputScaleFactor
 
     dHz = 1.*fs/N
 
@@ -86,7 +86,7 @@ def suppressFreqDFTmodel(x, fs, N):
             print i*dHz
     '''    
 
-    yfilt = dftSynth(mX,pX,M)
+    yfilt = dftSynth(mX,pX,M)*outputScaleFactor
 
     return y,yfilt
 
